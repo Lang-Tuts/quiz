@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'attend_exams/attendexam'
+
+  get 'attend_exams/completeexam'
+
+  get 'attend_exams/onlineusers'
+
   get 'questions/allocate_to_exam'
 
   resources :questions
