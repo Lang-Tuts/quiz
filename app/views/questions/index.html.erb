@@ -1,2 +1,14 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<table class="striped">
+    <tr>
+        <th>Question</th>
+        <th>Edit</th>
+        <th>Show</th>
+    </tr>
+<% @question.each do |question| %>
+    <tr>
+        <td><%= question.description %></td>
+        <td>Edit</td>
+        <td>view</td>
+    </tr>
+<% end %>
+    </table>

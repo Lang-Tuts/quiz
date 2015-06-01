@@ -1,24 +1,24 @@
-<%= form_tag "question"  do%>
+<%= form_tag('/question_create', method: "post")  do%>
     <div class="field">
     <div class="row">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <%= text_area 'description','description', :class=>"materialize-textarea"%></p>
+                    <%= text_area "questions",:description , :class=>"materialize-textarea"%></p>
                     <label for="book">Question</label>
                 </div>
             </div>
         </form>
     </div>
     <%(1..4).each do |t|%>  
-    <div class="row">
+        <div class="row">
         <div class="input-field col s6">
-            <%= text_field 'answer',t%>
+            <%= text_field :answers , t%>
             <% if t==1 %> 
                 <%= label_tag "Option#{t}: ACTUAL ANSWER" %>
-            <% else %>
+        <% else %>
                 <%= label_tag "Option#{t}" %>
-            <% end %>
+        <% end %>
 
         </div>
     </div>
