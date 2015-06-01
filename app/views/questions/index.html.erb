@@ -1,14 +1,12 @@
 <table class="striped">
     <tr>
         <th>Question</th>
-        <th>Edit</th>
         <th>Show</th>
     </tr>
 <% @question.each do |question| %>
     <tr>
         <td><%= question.description %></td>
-        <td>Edit</td>
-        <td>view</td>
+        <td><%= link_to "View", question %></td>
     </tr>
 <% end %>
     </table>

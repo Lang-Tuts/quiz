@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'questions/index'
 
   get 'questions/allocate_to_exam'
 
-  get 'questions/new'
+  resources :questions
   post "question_create" => "questions#create_question"
   resources :exams
 
