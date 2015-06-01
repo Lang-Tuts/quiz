@@ -1,2 +1,22 @@
-<h1>AttendExams#attendexam</h1>
-<p>Find me in app/views/attend_exams/attendexam.html.erb</p>
+<% @exam_questions.each do |t| %>
+    <div class="col s12">
+        <h5><%= t.description %></h5>
+    </div>
+    <% @answers = t.answers %>
+    <% @answers.shuffle.each do |ans| %>
+        <div class="col s6">
+            <form action="#">
+                <% if ans.actual_answer == 1 %>
+                <% else %>
+                <% end %>
+                <p>
+                <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
+                <label for="<%=ans.id%>"><%= ans.content %></label>
+                        </p>
+            </form>
+        </div>
+    <% end %>
+<% end %>
+<script>
+$(document).ready(function() {
+</script>
