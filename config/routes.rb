@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exams
+
   root 'dashboard#index'
 
   devise_for :users
