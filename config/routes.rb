@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'questions/index'
+
+  get 'questions/allocate_to_exam'
+
+  get 'questions/new'
+
   resources :exams
 
   root 'dashboard#index'
