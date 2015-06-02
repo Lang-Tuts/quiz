@@ -5,6 +5,7 @@
             <h5><%= t.description %></h5>
         </div>
         <% @answers = t.answers %>
+                <% @qs1 = Attendexam.find_by_user_id_and_question_id(current_user.id,t.id) %>
         <% @answers.shuffle.each do |ans| %>
             <div class="col s9">
             <form action="#">
@@ -12,7 +13,17 @@
                 <% else %>
                 <% end %>
                 <p>
-                <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
+                <% @qs = Attendexam.find_by_user_id_and_question_id_and_answer_id(current_user.id,t.id,ans.id) %>
+                <% if @qs %>
+                    <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", checked='true' />
+                <% else %>
+                    <% if @qs1 %> 
+                       <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", disabled='true' />
+                    <% else %>
+                       <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
+                    <% end %>
+
+                <% end %>
                 <label for="<%=ans.id%>"><%= ans.content %></label>
                 </p>
             </form>
