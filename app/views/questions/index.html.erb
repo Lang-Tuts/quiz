@@ -6,7 +6,7 @@
 <% @question.each do |question| %>
     <tr>
         <td><%= question.description %></td>
-        <td><%= link_to "View", question %></td>
+        <td><%= link_to "View", question, :class=> "waves-effect waves-light btn" %></td>
     </tr>
 <% end %>
     </table>
