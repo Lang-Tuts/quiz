@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'attend_exams/completeexam'
 
   get 'attend_exams/onlineusers'
+  post 'attend_exams/submission'
 
   get 'questions/allocate_to_exam'
 

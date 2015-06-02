@@ -5,7 +5,7 @@
             <h5><%= t.description %></h5>
         </div>
         <% @answers = t.answers %>
-                <% @qs1 = Attendexam.find_by_user_id_and_question_id(current_user.id,t.id) %>
+        <% @qs1 = Attendexam.find_by_user_id_and_question_id(current_user.id,t.id) %>
         <% @answers.shuffle.each do |ans| %>
             <div class="col s9">
             <form action="#">
@@ -16,14 +16,14 @@
                 <% @qs = Attendexam.find_by_user_id_and_question_id_and_answer_id(current_user.id,t.id,ans.id) %>
                 <% if @qs %>
                     <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", checked='true' />
-                <% else %>
+            <% else %>
                     <% if @qs1 %> 
-                       <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", disabled='true' />
-                    <% else %>
-                       <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
-                    <% end %>
+                    <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", disabled='true' />
+            <% else %>
+                    <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
+            <% end %>
 
-                <% end %>
+            <% end %>
                 <label for="<%=ans.id%>"><%= ans.content %></label>
                 </p>
             </form>
@@ -39,12 +39,28 @@
         <table>
             <% @user.each do |t| %>
                 <tr>
-                    
-            <% if t.updated_at > 7.minutes.ago %>
-                <td> <a class="btn-floating btn-small waves-effect waves-light green"></a></td><td> <p style="color:green"><%= t.email %></p></td>
-        <% else %>
-            <td> <a class="btn-floating btn-small waves-effect waves-light red"></a></td><td> <p style="color:grey"><%= t.email %></p></td>
-        <% end %>
-    <% end %>
-    </div>
-</div>
+
+                <% if t.updated_at > 7.minutes.ago %>
+                    <td> <a class="btn-floating btn-small waves-effect waves-light green"></a></td><td> <p style="color:green"><%= t.email %></p></td>
+            <% else %>
+                    <td> <a class="btn-floating btn-small waves-effect waves-light red"></a></td><td> <p style="color:grey"><%= t.email %></p></td>
+            <% end %>
+            <% end %>
+            </div>
+        </div>
+        <script>
+var check;
+$("input").on("click", function(){
+        check = $(this).prop("checked");
+        if(check) {
+        var qs = $(this).attr('id');
+        $.ajax({
+            url: "/attend_exams/submition",
+            beforeSend: function() { alert("Hi") },
+            data: "id="+qs, 
+            success: function() { alert('Bye') }
+        });
+        } else {
+        }
+        }); 
+        </script>
