@@ -15,7 +15,7 @@
         <%@exam.each do |t| %>
         <tr>
             <td><h5><%= t.name %></h5></td>
-            <td><%= link_to "Attend", questions_path, :class => "waves-effect waves-light btn-large red" %></td>
+            <td><%= link_to "Attend", "attend_exams/attendexam?exam_id=#{t.id}", :class => "waves-effect waves-light btn-large red" %></td>
         </tr>
     <% end %>
     </table>
