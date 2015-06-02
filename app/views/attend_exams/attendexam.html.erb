@@ -1,10 +1,12 @@
-<% @exam_questions.each do |t| %>
-    <div class="col s12">
-        <h5><%= t.description %></h5>
-    </div>
-    <% @answers = t.answers %>
-    <% @answers.shuffle.each do |ans| %>
-        <div class="col s6">
+<div class="row">
+    <div class="col s9">
+        <% @exam_questions.each do |t| %>
+            <div class="col s9">
+            <h5><%= t.description %></h5>
+        </div>
+        <% @answers = t.answers %>
+        <% @answers.shuffle.each do |ans| %>
+            <div class="col s9">
             <form action="#">
                 <% if ans.actual_answer == 1 %>
                 <% else %>
@@ -12,11 +14,26 @@
                 <p>
                 <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>" />
                 <label for="<%=ans.id%>"><%= ans.content %></label>
-                        </p>
+                </p>
             </form>
         </div>
     <% end %>
-<% end %>
-<script>
-$(document).ready(function() {
-</script>
+    <% end %>
+    </div>
+
+    <div class="col s3" style="border:1px solid red">
+        Online users
+        <hr/>
+        <% @user = User.all %>
+        <table>
+            <% @user.each do |t| %>
+                <tr>
+                    
+            <% if t.updated_at > 7.minutes.ago %>
+                <td> <a class="btn-floating btn-small waves-effect waves-light green"></a></td><td> <p style="color:green"><%= t.email %></p></td>
+        <% else %>
+            <td> <a class="btn-floating btn-small waves-effect waves-light red"></a></td><td> <p style="color:grey"><%= t.email %></p></td>
+        <% end %>
+    <% end %>
+    </div>
+</div>
