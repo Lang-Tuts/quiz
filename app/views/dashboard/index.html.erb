@@ -8,5 +8,15 @@
         </tr>
     </table>
 <% else %>
-    jhkjhds
+    <h4>Start attending challenges </h4>
+    <hr/>
+    <table class="hoverable">
+        <% @exam = Exam.all %>
+        <%@exam.each do |t| %>
+        <tr>
+            <td><h5><%= t.name %></h5></td>
+            <td><%= link_to "Attend", questions_path, :class => "waves-effect waves-light btn-large red" %></td>
+        </tr>
+    <% end %>
+    </table>
 <% end %>

@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
         @ans.content = params[:answers][:"#{t}"]
         @ans.save
       end
-      redirect_to :back
+      redirect_to questions_path
   end
   def allocate_to_exam
   end
