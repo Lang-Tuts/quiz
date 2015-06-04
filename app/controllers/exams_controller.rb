@@ -21,6 +21,20 @@ class ExamsController < ApplicationController
   def edit
   end
   
+  def challenge
+    @exams = Exam.where(:user_id => current_user.id )
+    @students = User.all
+  end
+  
+  def challenge_users
+    unless Examuser.find_by_user_id_and_exam_id(params[:user_id],params[:id])
+        @exam_user = Examuser.new
+        @exam_user.user_id = params[:user_id]
+        @exam_user.exam_id = params[:id]
+        @exam_user.save
+    end
+  end
+
   # POST /exams
   # POST /exams.json
   def create

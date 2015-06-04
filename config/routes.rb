@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post 'attend_exams/submission' => "attend_exams#submission"
 
   get 'questions/allocate_to_exam'
-
+  get 'challenge' => "exams#challenge"
+  post '/challenge/student' => 'exams#challenge_users'
   resources :questions
   post "question_create" => "questions#create_question"
   resources :exams

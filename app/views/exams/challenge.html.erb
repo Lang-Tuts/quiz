@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Challenge some one</h1>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+    <% @exams.each do |exm| %>
+        <li>
+        <div class="collapsible-header green" style="color:white"><i class="mdi-av-timer"></i><%= exm.name %></div>
+        <div class="collapsible-body">
+            
+<table class="striped">
+  <thead>
+    <tr>
+      <th style="width:50%">Name</th>
+      <th style="width:20%">Allocate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |std| %>
+      <tr>
+        <td><%= std.email %></td>
+        <td>
+        
+            <!-- Switch -->
+              <div class="switch">
+                <label>
+                    Off
+                    <%= check_box_tag "#{exm.id}", std.id, :name => std.id %>
+                  <span class="lever"></span>
+                  On
+                </label>
+              </div>
+            <!-- Switch -->
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+        </div>
+        </li>
+    <% end %>
+
+</ul>
+
+
+
+
+
+<script>
+    var check;
+    $("input").on("click", function()
+    {
+        check = $(this).prop("checked");
+        if(check) 
+        {
+            var qs = $(this).attr('id');
+            var usr = $(this).attr('value');
+            $.ajax({
+                type: "POST",
+                url: "/challenge/student",
+                beforeSend: function() {},
+                data: { id: qs, user_id: usr }, 
+                success: function() {
+                }
+            });
+        } 
+    }); 
+    </script>
