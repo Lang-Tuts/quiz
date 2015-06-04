@@ -30,9 +30,8 @@
         </div>
     <% end %>
     <% end %>
-</div>
-    
-<td><%= link_to 'Finish exam',root_path,:class=>"waves-effect waves-light btn blue",:style=> "padding:auto 7%;font-size:24px;color:white" %></td>
+    </div>
+    <input type="submit" value="Submit" id="btn_finish" />
     <div class="col s3" style="border:1px solid red">
         Online users
         <hr/>
@@ -52,10 +51,6 @@
 </div>
     <script>
 $(document).ready(function(){
-        if("<%=@exam_questions.size%>" == $("input:checked").length)
-        $("#btn_finish").visible();
-            end
-
         setInterval(function(){cache_clear()},5000);
         });
 function cache_clear()
