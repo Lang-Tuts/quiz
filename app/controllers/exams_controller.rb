@@ -20,12 +20,15 @@ class ExamsController < ApplicationController
   # GET /exams/1/edit
   def edit
   end
-
+  
   # POST /exams
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
     @exam.user_id = current_user.id
+    @exam.questions_count = @exam.questions_count > Question.count ? Question.count : @exam.questions_count
+    @question_set = Question.pluck(:id).sample(@exam.questions_count)
+    @exam.questionset = @question_set
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
