@@ -11,14 +11,14 @@
         <ul class="nav navbar-nav">
             <% if user_signed_in? %>
             <li class="dropdown">
-            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Challange<b class="caret"></b></a>
+            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle waves-effect waves-light btn-large red " data-toggle="dropdown">Challange<b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                 <li>
-                <%= link_to 'Challenge some one', challenge_path %>
+                <%= link_to 'Challenge some one', challenge_path , :class => "waves-effect waves-light btn-large" %>
                 </li>
                 <li>
-                <%= link_to 'Participate to a challenge', participate_path %>
+                <%= link_to 'Participate to a challenge', participate_path , :class => "waves-effect waves-light btn-large" %>
                 </li>
                 </li>
             </ul>
@@ -26,12 +26,12 @@
             <% end %>
         <% if user_signed_in? %>
             <li class="dropdown">
-            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Create a challenge<b class="caret"></b></a>
+            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle waves-effect waves-light btn-large red  " data-toggle="dropdown">Create a challenge<b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
             <% if user_signed_in? %>
                 <li>
-                <%= link_to 'Configure exams', exams_path %>
+                <%= link_to 'Configure exams', exams_path , :class => "waves-effect waves-light btn-large" %>
                 </li>
             <% end %>
                 </li>
@@ -45,7 +45,7 @@
         <% if user_signed_in? %>
         <% if current_user.has_role? :admin %>
             <li class="dropdown">
-               <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Questions<b class="caret"></b></a>
+               <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle   waves-effect waves-light btn-large red " data-toggle="dropdown">Questions<b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
             <%= link_to "All created questions", questions_path, :class => "waves-effect waves-light btn-large" %>
@@ -58,16 +58,16 @@
         <% end %>
         <% end %>
          <li class="dropdown">
-            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">User session <b class="caret"></b></a>
+            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle   waves-effect waves-light btn-large red " data-toggle="dropdown">User session <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                 <% if user_signed_in? %>
                 <li>
-                <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+                <%= link_to 'Logout', destroy_user_session_path, :method => :delete , :class => "waves-effect waves-light btn-large" %>
                 </li>
             <% else %>
                 <li>
-                <%= link_to 'Login', new_user_session_path %>
+                <%= link_to 'Login', new_user_session_path , :class => "waves-effect waves-light btn-large" %>
                 </li>
             <% end %>
                 </li>
