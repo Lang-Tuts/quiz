@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'questions/allocate_to_exam'
   get 'challenge' => "exams#challenge"
   post '/challenge/student' => 'exams#challenge_users'
+  get 'participate' => 'exams#participate_challenge'
   resources :questions
   post "question_create" => "questions#create_question"
   resources :exams

@@ -25,7 +25,11 @@ class ExamsController < ApplicationController
     @exams = Exam.where(:user_id => current_user.id )
     @students = User.all
   end
-  
+  def participate_challenge
+    @exams = Examuser.where(:user_id => current_user.id).pluck(:exam_id)
+    @exams = Exam.where(:id => @exams)
+    @students = User.all
+  end
   def challenge_users
     unless Examuser.find_by_user_id_and_exam_id(params[:user_id],params[:id])
         @exam_user = Examuser.new
