@@ -21,7 +21,7 @@
       <tr>
         <td><%= std.email %></td>
         <td>
-        
+            <% unless Examuser.find_by_exam_id_and_user_id(exm,std) %> 
             <!-- Switch -->
               <div class="switch">
                 <label>
@@ -31,7 +31,10 @@
                   On
                 </label>
               </div>
-            <!-- Switch -->
+              <!-- Switch -->
+             <% else %>
+                 <b class="red">Allocated</b>
+             <% end %>
         </td>
       </tr>
     <% end %>

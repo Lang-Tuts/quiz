@@ -7,9 +7,6 @@
     <tr>
       <th style="width:50%">Name</th>
       <th style="width:20%">Questions count</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -18,11 +15,6 @@
       <tr>
         <td><%= exam.name %></td>
         <td><%= exam.questions_count %></td>
-        <td> 
-            <%= link_to 'Show', exam ,:class=>"waves-effect waves-light btn"%>
-        </td>
-        <td><%= link_to 'Edit', edit_exam_path(exam) ,:class=>"waves-effect waves-light btn blue"%></td>
-        <td><%= link_to 'Destroy', exam,:class=>"waves-effect waves-light btn red", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
