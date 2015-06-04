@@ -30,41 +30,52 @@
         </div>
     <% end %>
     <% end %>
-    </div>
-
+</div>
+<%= link_to 'Finish exam',root_path,:class=>"waves-effect waves-light btn blue",:style=> "padding:auto 7%;font-size:24px;color:white" %>
     <div class="col s3" style="border:1px solid red">
         Online users
         <hr/>
         <% @user = User.all %>
         <table>
             <% @user.each do |t| %>
-                <tr>
-
+            <tr>
                 <% if t.updated_at > 5.minutes.ago %>
                     <td> <a class="btn-floating btn-small waves-effect waves-light green"></a></td><td> <p style="color:green"><%= t.email %></p></td>
-            <% else %>
+                <% else %>
                     <td> <a class="btn-floating btn-small waves-effect waves-light red"></a></td><td> <p style="color:grey"><%= t.email %></p></td>
+                <% end %>
+            </tr>
             <% end %>
-            <% end %>
-            </div>
-        </div>
-        <script>
+        </table>
+    </div>
+</div>
+    <script>
+$(document).ready(function(){
+        setInterval(function(){cache_clear()},5000);
+        });
+function cache_clear()
+{
+    window.location.reload(true);
+}
 var check;
 $("input").on("click", function(){
         check = $(this).prop("checked");
-        if(check) {
+        if(check) 
+        {
         var qs = $(this).attr('id');
         $.ajax({
-            type: "POST",
-            url: "/attend_exams/submission",
-            beforeSend: function() {
-            },
-            data: "id="+qs, 
-            success: function() {
-            location.reload();
-            }
-        });
-        } else {
+type: "POST",
+url: "/attend_exams/submission",
+beforeSend: function() {
+},
+data: "id="+qs, 
+success: function() {
+location.reload();
+}
+});
+        } 
+        else 
+        {
         }
         }); 
-        </script>
+    </script>
