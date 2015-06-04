@@ -4,7 +4,7 @@ class ExamsController < ApplicationController
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
+    @exams = Exam.where(:user_id => current_user.id )
   end
 
   # GET /exams/1
@@ -25,7 +25,7 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-
+    @exam.user_id = current_user.id
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
@@ -40,6 +40,7 @@ class ExamsController < ApplicationController
   # PATCH/PUT /exams/1
   # PATCH/PUT /exams/1.json
   def update
+    @exam.user_id = current_user.id
     respond_to do |format|
       if @exam.update(exam_params)
         format.html { redirect_to @exam, notice: 'Exam was successfully updated.' }
