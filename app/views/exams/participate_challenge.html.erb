@@ -5,7 +5,7 @@
 <ul class="collapsible popout" data-collapsible="accordion">
     <% @exams.each do |exm| %>
         <li>
-        <div class="collapsible-header blue" style="color:white"><i class="mdi-av-timer"></i><%= exm.name %></div>
+        <div class="collapsible-header blue" style="color:white"><i class="mdi-av-timer"></i><%= exm.name %> <b style="color:black;text-align:left">Challenge Assigned BY : <%= User.find(exm.user_id).email %></b></div>
         <div class="collapsible-body">
             
 <table class="striped">
