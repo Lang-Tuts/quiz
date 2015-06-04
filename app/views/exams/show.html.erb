@@ -5,5 +5,9 @@
   <%= @exam.name %>
 </p>
 
+<p>
+  <strong>Total questions count:</strong>
+  <%= @exam.questions_count %>
+</p>
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>
