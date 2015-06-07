@@ -40,7 +40,7 @@
             <% @user.each do |t| %>
                 <tr>
 
-                <% if t.updated_at > 7.minutes.ago %>
+                <% if t.updated_at > 5.minutes.ago %>
                     <td> <a class="btn-floating btn-small waves-effect waves-light green"></a></td><td> <p style="color:green"><%= t.email %></p></td>
             <% else %>
                     <td> <a class="btn-floating btn-small waves-effect waves-light red"></a></td><td> <p style="color:grey"><%= t.email %></p></td>
@@ -61,7 +61,7 @@ $("input").on("click", function(){
             },
             data: "id="+qs, 
             success: function() {
-            ilocation.reload();
+            location.reload();
             }
         });
         } else {
