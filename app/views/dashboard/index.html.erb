@@ -16,6 +16,15 @@
         <tr>
             <td><h5><%= t.name %></h5></td>
             <td><%= link_to "Attend", "attend_exams/attendexam?exam_id=#{t.id}", :class => "waves-effect waves-light btn-large red" %></td>
+            <% @qs = Attendexam.where(:user_id=>current_user.id,:exam_id=>t.id) %>
+            <td>
+                <% @mark = 0 %>
+                <% @qs.each do |d| %>
+                    <% @mark = @mark + d.mark %>
+                <% end %>
+                <p style="color:green">Mark secured <%= @mark %> </p>    
+            </td>
+
         </tr>
     <% end %>
     </table>

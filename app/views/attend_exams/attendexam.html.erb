@@ -55,7 +55,8 @@ $("input").on("click", function(){
         if(check) {
         var qs = $(this).attr('id');
         $.ajax({
-            url: "/attend_exams/submition",
+            type: "POST",
+            url: "/attend_exams/submission",
             beforeSend: function() { alert("Hi") },
             data: "id="+qs, 
             success: function() { alert('Bye') }
