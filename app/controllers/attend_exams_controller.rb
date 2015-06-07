@@ -1,7 +1,7 @@
 class AttendExamsController < ApplicationController
  
   def attendexam
-      @exam_questions = Question.all.limit(2).reverse
+      @exam_questions = Question.all.limit(10)
   end
 
   def completeexam
