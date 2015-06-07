@@ -15,7 +15,7 @@
                 <p>
                 <% @qs = Attendexam.find_by_user_id_and_question_id_and_answer_id(current_user.id,t.id,ans.id) %>
                 <% if @qs %>
-                    <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", checked='true' />
+                    <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", checked='true', disabled="true" />
             <% else %>
                     <% if @qs1 %> 
                     <input name="<%=ans.question_id%>" type="radio" id="<%=ans.id%>", disabled='true' />
