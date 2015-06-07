@@ -49,22 +49,32 @@
             </div>
         </div>
         <script>
+        $(document).ready(function(){
+            setInterval(function(){cache_clear()},5000);
+        });
+        function cache_clear()
+        {
+            window.location.reload(true);
+        }
 var check;
 $("input").on("click", function(){
         check = $(this).prop("checked");
-        if(check) {
-        var qs = $(this).attr('id');
-        $.ajax({
-            type: "POST",
-            url: "/attend_exams/submission",
-            beforeSend: function() {
-            },
-            data: "id="+qs, 
-            success: function() {
-            location.reload();
-            }
-        });
-        } else {
+        if(check) 
+        {
+            var qs = $(this).attr('id');
+            $.ajax({
+                type: "POST",
+                url: "/attend_exams/submission",
+                beforeSend: function() {
+                },
+                data: "id="+qs, 
+                success: function() {
+                    location.reload();
+                }
+            });
+        } 
+        else 
+        {
         }
         }); 
         </script>
