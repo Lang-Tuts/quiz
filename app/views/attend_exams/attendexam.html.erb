@@ -57,9 +57,12 @@ $("input").on("click", function(){
         $.ajax({
             type: "POST",
             url: "/attend_exams/submission",
-            beforeSend: function() { alert("Hi") },
+            beforeSend: function() {
+            },
             data: "id="+qs, 
-            success: function() { alert('Bye') }
+            success: function() {
+            ilocation.reload();
+            }
         });
         } else {
         }
