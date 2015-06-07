@@ -1,6 +1,6 @@
 production:  
   adapter: postgresql
   host: localhost
-  database: examination_prod
+  database: testexamination
   pool: 5
   timeout: 5000
