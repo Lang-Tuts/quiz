@@ -1,5 +1,5 @@
 adapter: postgresql
-    host: localhost
-    database: examination_prod
-    pool: 5
-    timeout: 5000
+  host: localhost
+  database: examination_prod
+  pool: 5
+  timeout: 5000
